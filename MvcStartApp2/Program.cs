@@ -1,9 +1,41 @@
-var builder = WebApplication.CreateBuilder(args);
+namespace MvcStartApp2
+{
+    public class Program
+    {
+        /// <summary>
+        /// Точка входа
+        /// </summary>
+        /// <param name="args"></param>
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        /// <summary>
+        /// Статический метод, создающий и настраивающий IHostBuilder-объект.
+        /// Объект, который создает хост для развертывания Core-приложения.
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+
+                // Переопределяем путь до статических файлов по умолчанию
+                webBuilder.UseWebRoot("Views");
+            });
+    }
+}
+
+
+//var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 //builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
+//var app = builder.Build();
 
 //// Configure the HTTP request pipeline.
 //if (!app.Environment.IsDevelopment())
@@ -24,4 +56,4 @@ var app = builder.Build();
 //    name: "default",
 //    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+//app.Run();

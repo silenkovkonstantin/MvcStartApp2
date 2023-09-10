@@ -18,5 +18,10 @@ namespace MvcStartApp2.Models.Db
         {
             Database.EnsureCreated();
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().ToTable("Users");
+        }
     }
 }

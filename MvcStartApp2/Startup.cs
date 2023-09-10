@@ -16,31 +16,45 @@ namespace MvcStartApp2
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Метод вызывается средой ASP.NET
+        /// Используется для подключения сервисов приложения
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IBlogRepository, BlogRepository>();
             services.AddSingleton<IConfiguration>(_configuration);
             string? connection = _configuration.GetConnectionString("DefaultConnection"); 
             services.AddDbContext<BlogContext>(options => options.UseSqlServer(connection), ServiceLifetime.Singleton);
             services.AddControllersWithViews();
-            services.AddSingleton<IBlogRepository, BlogRepository>();
         }
 
+        /// <summary>
+        /// Метод вызывается средой ASP.NET
+        /// Используется для настройки конвейра запросов
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Configure the HTTP request pipeline.
-            if (!_env.IsDevelopment())
+            // Проверяем не запущен ли проект в среде разработки
+            if (_env.IsDevelopment())
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseDeveloperExceptionPage();
             }
 
+            // Обрабатываем ошибки HTTP
+            app.UseStatusCodePages();
+            // Компонент отвечающий за маршрутизацию
             app.UseRouting();
-            app.UseAuthorization();
-            app.UseHttpsRedirection();
+            // Поддержка статических файлов
             app.UseStaticFiles();
             // Подключаем логирование с использованием ПО промежуточного слоя
             app.UseMiddleware<LoggingMiddleware>();
+
+            app.UseAuthorization();
+            //app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {
