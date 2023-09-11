@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MvcStartApp2.Models.Db;
+using MvcStartApp2.Models.Repository;
 
 namespace MvcStartApp2.Controllers
 {
@@ -17,9 +19,17 @@ namespace MvcStartApp2.Controllers
             return View(authors);
         }
 
-        public async Task<IActionResult> Register()
+        [HttpGet]
+        public IActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(User newUser)
+        {
+            await _repo.AddUser(newUser);
+            return View(newUser);
         }
     }
 }

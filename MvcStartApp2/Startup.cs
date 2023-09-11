@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MvcStartApp2.Models.Db;
 using MvcStartApp2.Middlewares;
+using MvcStartApp2.Models.Repository;
 
 namespace MvcStartApp2
 {
@@ -24,7 +25,8 @@ namespace MvcStartApp2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IBlogRepository, BlogRepository>();
-            services.AddSingleton<IConfiguration>(_configuration);
+            services.AddSingleton<ILogRepository, LogRepository>();
+            //services.AddSingleton<IConfiguration>(_configuration);
             string? connection = _configuration.GetConnectionString("DefaultConnection"); 
             services.AddDbContext<BlogContext>(options => options.UseSqlServer(connection), ServiceLifetime.Singleton);
             services.AddControllersWithViews();
@@ -43,6 +45,12 @@ namespace MvcStartApp2
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
 
             // Обрабатываем ошибки HTTP
             app.UseStatusCodePages();
@@ -51,10 +59,10 @@ namespace MvcStartApp2
             // Поддержка статических файлов
             app.UseStaticFiles();
             // Подключаем логирование с использованием ПО промежуточного слоя
-            app.UseMiddleware<LoggingMiddleware>();
+            app.UseMiddleware<LoggingMiddleware>(env);
 
             app.UseAuthorization();
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {
