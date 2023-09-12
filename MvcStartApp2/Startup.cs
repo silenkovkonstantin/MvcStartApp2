@@ -2,6 +2,7 @@
 using MvcStartApp2.Models.Db;
 using MvcStartApp2.Middlewares;
 using MvcStartApp2.Models.Repository;
+using Microsoft.Extensions.Configuration;
 
 namespace MvcStartApp2
 {
@@ -25,10 +26,15 @@ namespace MvcStartApp2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IBlogRepository, BlogRepository>();
-            services.AddSingleton<ILogRepository, LogRepository>();
+            services.AddSingleton<IRequestRepository, RequestRepository>();
             //services.AddSingleton<IConfiguration>(_configuration);
             string? connection = _configuration.GetConnectionString("DefaultConnection"); 
             services.AddDbContext<BlogContext>(options => options.UseSqlServer(connection), ServiceLifetime.Singleton);
+            services.AddControllersWithViews();
+
+            string reqRepoConnection = _configuration.GetConnectionString("ReqRepoConnection");
+            services.AddDbContext<RequestContext>(options => options.UseSqlServer(reqRepoConnection), ServiceLifetime.Singleton);
+            services.AddSingleton<IRequestRepository, RequestRepository>();
             services.AddControllersWithViews();
         }
 

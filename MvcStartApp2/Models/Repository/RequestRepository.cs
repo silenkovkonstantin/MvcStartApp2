@@ -3,10 +3,10 @@ using MvcStartApp2.Models.Db;
 
 namespace MvcStartApp2.Models.Repository
 {
-    public class LogRepository : ILogRepository
+    public class RequestRepository : IRequestRepository
     {
-        private readonly BlogContext _context;
-        public LogRepository(BlogContext context)
+        private readonly RequestContext _context;
+        public RequestRepository(RequestContext context)
         {
             _context = context;
         }

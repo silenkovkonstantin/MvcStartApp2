@@ -6,9 +6,9 @@ namespace MvcStartApp2.Controllers
 {
     public class LogController : Controller
     {
-        private readonly ILogRepository _log;
+        private readonly IRequestRepository _log;
 
-        public LogController(ILogRepository log)
+        public LogController(IRequestRepository log)
         {
             _log = log;
         }

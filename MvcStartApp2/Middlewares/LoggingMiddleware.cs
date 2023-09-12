@@ -6,12 +6,12 @@ namespace MvcStartApp2.Middlewares
     {
         private IWebHostEnvironment _env;
         private readonly RequestDelegate _next;
-        private ILogRepository _log;
+        private IRequestRepository _log;
 
         /// <summary>
         ///  Middleware-компонент должен иметь конструктор, принимающий RequestDelegate
         /// </summary>
-        public LoggingMiddleware(RequestDelegate next, IWebHostEnvironment env, ILogRepository log)
+        public LoggingMiddleware(RequestDelegate next, IWebHostEnvironment env, IRequestRepository log)
         {
             _next = next;
             _env = env;

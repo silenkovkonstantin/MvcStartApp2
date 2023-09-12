@@ -2,7 +2,7 @@
 
 namespace MvcStartApp2.Models.Repository
 {
-    public interface ILogRepository
+    public interface IRequestRepository
     {
         public Task AddRequest(string urlInfo);
 
