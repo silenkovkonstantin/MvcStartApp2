@@ -1,6 +1,4 @@
-﻿using MvcStartApp2.Models.Db;
-
-namespace MvcStartApp2.Models.Repository
+﻿namespace RequestLibrary
 {
     public interface IRequestRepository
     {
