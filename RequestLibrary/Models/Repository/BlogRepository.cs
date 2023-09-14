@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MvcStartApp2.Models.Db;
+using RequestLibrary.Models.Db;
 
-namespace MvcStartApp2.Models.Repository
+namespace RequestLibrary.Models.Repository
 {
     public class BlogRepository : IBlogRepository
     {

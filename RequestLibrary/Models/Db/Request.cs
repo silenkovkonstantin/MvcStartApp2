@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RequestLibrary
+namespace RequestLibrary.Models.Db
 {
     [Table("Requests")]
     public class Request

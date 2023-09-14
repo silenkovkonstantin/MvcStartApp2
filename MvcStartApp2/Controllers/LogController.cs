@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using MvcStartApp2.Models.Repository;
-using RequestLibrary;
+﻿using Microsoft.AspNetCore.Mvc;
+using RequestLibrary.Models.Repository;
 
 namespace MvcStartApp2.Controllers
 {

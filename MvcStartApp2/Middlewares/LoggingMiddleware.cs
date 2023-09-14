@@ -1,5 +1,4 @@
-﻿using MvcStartApp2.Models.Repository;
-using RequestLibrary;
+﻿using RequestLibrary.Models.Repository;
 
 namespace MvcStartApp2.Middlewares
 {

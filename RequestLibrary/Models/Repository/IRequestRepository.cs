@@ -1,4 +1,6 @@
-﻿namespace RequestLibrary
+﻿using RequestLibrary.Models.Db;
+
+namespace RequestLibrary.Models.Repository
 {
     public interface IRequestRepository
     {

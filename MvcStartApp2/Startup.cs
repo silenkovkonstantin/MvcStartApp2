@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MvcStartApp2.Models.Db;
+using RequestLibrary.Models.Db;
 using MvcStartApp2.Middlewares;
-using MvcStartApp2.Models.Repository;
-using Microsoft.Extensions.Configuration;
-using RequestLibrary;
+using RequestLibrary.Models.Repository;
 
 namespace MvcStartApp2
 {

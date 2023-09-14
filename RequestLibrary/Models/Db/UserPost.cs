@@ -1,4 +1,4 @@
-﻿namespace MvcStartApp2.Models.Db
+﻿namespace RequestLibrary.Models.Db
 {
     /// <summary>
     /// Модель поста в блоге

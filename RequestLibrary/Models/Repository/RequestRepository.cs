@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RequestLibrary.Models.Db;
 
-namespace RequestLibrary
+namespace RequestLibrary.Models.Repository
 {
     public class RequestRepository : IRequestRepository
     {

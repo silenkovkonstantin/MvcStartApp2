@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MvcStartApp2.Models;
-using MvcStartApp2.Models.Db;
-using MvcStartApp2.Models.Repository;
+using RequestLibrary.Models.Db;
+using RequestLibrary.Models.Repository;
 using System.Diagnostics;
 
 namespace MvcStartApp2.Controllers

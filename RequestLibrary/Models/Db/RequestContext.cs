@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace RequestLibrary
+namespace RequestLibrary.Models.Db
 {
     public sealed class RequestContext : DbContext
     {
